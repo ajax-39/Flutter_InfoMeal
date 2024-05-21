@@ -30,7 +30,7 @@ class CategoriesScreen extends StatelessWidget {
       //
       appBar: AppBar(
         title: const Text(
-          'Pick Your Category',
+          'Pick Your Category as per choice See the changes  ',
         ),
       ),
       //
