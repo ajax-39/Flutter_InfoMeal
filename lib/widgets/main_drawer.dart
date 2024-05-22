@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class MainDrawer extends StatelessWidget {
-  const MainDrawer({super.key});
+  const MainDrawer({
+    super.key,
+    required this.onSelectScreen,
+  });
+
+  final void Function(String identifier) onSelectScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +49,7 @@ class MainDrawer extends StatelessWidget {
                         color: Theme.of(context).colorScheme.primary,
                       ),
                 ),
+                //
               ],
             ),
           ),
@@ -63,7 +70,9 @@ class MainDrawer extends StatelessWidget {
                   ),
             ),
             //
-            onTap: () {},
+            onTap: () {
+              onSelectScreen('meals');
+            },
           ),
           //
           ListTile(
@@ -82,7 +91,9 @@ class MainDrawer extends StatelessWidget {
                   ),
             ),
             //
-            onTap: () {},
+            onTap: () {
+              onSelectScreen('filters');
+            },
           ),
         ],
       ),

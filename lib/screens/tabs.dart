@@ -52,6 +52,14 @@ class _TabScreenState extends State<TabScreen> {
     );
   }
 
+  //change screen by drawer
+  void _setScreen(String identifier) {
+    if (identifier == 'filers') {
+    } else {
+      Navigator.pop(context);
+    }
+  }
+
   @override
   Widget build(context) {
     Widget activePage = CategoriesScreen(
@@ -94,7 +102,9 @@ class _TabScreenState extends State<TabScreen> {
         currentIndex: _selectedPageIndex,
       ),
       //
-      drawer: const MainDrawer(),
+      drawer: MainDrawer(
+        onSelectScreen: _setScreen,
+      ),
     );
   }
 }
