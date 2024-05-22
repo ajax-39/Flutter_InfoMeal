@@ -29,12 +29,26 @@ class _TabScreenState extends State<TabScreen> {
     if (isExisting) {
       setState(() {
         _favoriteMeals.remove(meal);
+        _showInfoMessage("Meal is no longer a favorite");
       });
     } else {
       setState(() {
         _favoriteMeals.add(meal);
+        _showInfoMessage('Marked as favorite');
       });
     }
+  }
+
+  //show fav button click or not
+  void _showInfoMessage(String message) {
+    ScaffoldMessenger.of(context).clearSnackBars();
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: const Duration(seconds: 4),
+      ),
+    );
   }
 
   @override
