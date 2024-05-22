@@ -84,7 +84,7 @@ class MainDrawer extends StatelessWidget {
             ),
             //
             title: Text(
-              'Settings',
+              'Filters',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     color: Theme.of(context).colorScheme.onSurface,
                     fontSize: 24,
