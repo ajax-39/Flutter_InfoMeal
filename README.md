@@ -22,15 +22,6 @@ InfoMeal is a comprehensive recipe exploration app developed using Flutter. It o
 ### Filtering
 - Apply filters to refine recipe searches based on specific criteria, such as dietary restrictions or preparation time.
 
-## Getting Started
-
-To run InfoMeal, ensure you have Flutter installed on your development machine. Follow these steps:
-
-1. Clone the repository.
-2. Navigate to the project directory.
-3. Run `flutter pub get` to install dependencies.
-4. Use `flutter run` to start the app.
-
 ## Concepts Used
 
 ### Multi-Screen Navigation
