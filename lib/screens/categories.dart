@@ -52,6 +52,9 @@ class _CategoriesScreenState extends State<CategoriesScreen>
       lowerBound: 0,
       upperBound: 1,
     );
+
+    //start animation
+    _animationController.forward();
   }
 
   @override
@@ -61,26 +64,55 @@ class _CategoriesScreenState extends State<CategoriesScreen>
   }
 
   Widget build(context) {
-    return GridView(
-      padding: const EdgeInsets.all(18),
+    //put animation
+    return AnimatedBuilder(
+      animation: _animationController,
       //
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 3 / 2,
-        crossAxisSpacing: 20,
-        mainAxisSpacing: 20,
-      ),
-      //
-      children: [
-        for (final category in availableCategories)
-          CategoryGridItem(
-            category: category,
-            onSelectCategory: () => _selectCategory(
-              context,
-              category,
+      child: GridView(
+        padding: const EdgeInsets.all(18),
+        //
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 3 / 2,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
+        ),
+        //
+        children: [
+          for (final category in availableCategories)
+            CategoryGridItem(
+              category: category,
+              onSelectCategory: () => _selectCategory(
+                context,
+                category,
+              ),
             ),
+        ],
+      ),
+      //padding transitoin
+      // builder: (ctx, child) => Padding(
+      //   padding: EdgeInsets.only(
+      //     top: 100 - _animationController.value * 100,
+      //   ),
+      //   child: child,
+      // ),
+
+      //slide transition
+      builder: (context, child) => SlideTransition(
+        position: Tween(
+          begin: Offset(0, 0.3),
+          end: Offset(0, 0),
+        ).animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: Curves.easeInOut,
           ),
-      ],
+        ),
+        //
+        child: child,
+      ),
     );
+
+    //
   }
 }
